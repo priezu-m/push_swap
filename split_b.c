@@ -6,11 +6,23 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/02/08 14:35:15                                            */
-/*   Updated:  2023/02/08 19:39:43                                            */
+/*   Updated:  2023/02/09 17:03:15                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+bool	segment_internaly_ordered_b(t_stack stack_b, int segment_size)
+{
+	while (segment_size > 1)
+	{
+		if (*(stack_b.top) < *(stack_b.top - 1))
+			return (false);
+		stack_b.top--;
+		segment_size--;
+	}
+	return (true);
+}
 
 bool	something_to_do_in_b(t_stack stack_b, int bit)
 {
@@ -23,15 +35,17 @@ bool	something_to_do_in_b(t_stack stack_b, int bit)
 	while (stack_b.bottom <= stack_b.top)
 	{
 		if (*stack_b.bottom != distance)
-			break ;
+			return (false);
 		distance++;
 		stack_b.bottom++;
 	}
 	while (stack_b.top >= stack_b.bottom)
 	{
-		segment_size = get_segment_size_in_a(stack_b);
-		min_val_in_segment = get_max_val_in_segment(stack_b, segment_size);
+		segment_size = get_segment_size_in_b(stack_b);
+		min_val_in_segment = get_min_val_in_segment(stack_b, segment_size);
 		if (min_val_in_segment & bit)
+			return (true);
+		if (!segment_internaly_ordered_b(stack_b, segment_size))
 			return (true);
 		stack_b.top -= segment_size;
 	}

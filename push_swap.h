@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/01/24 18:45:48                                            */
-/*   Updated:  2023/02/08 16:54:52                                            */
+/*   Updated:  2023/02/09 17:01:55                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ void	swap_sort_a(t_stack *stack_a);
 void	swap_sort_b(t_stack *stack_b);
 void	rotate_segment_in_a(t_stack *stack_a, int segment_size);
 void	rotate_segment_in_b(t_stack *stack_b, int segment_size);
+bool	segment_internaly_ordered_b(t_stack stack_b, int segment_size);
+bool	segment_internaly_ordered_a(t_stack stack_b, int segment_size);
 
 
 #endif
