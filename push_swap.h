@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/01/24 18:45:48                                            */
-/*   Updated:  2023/02/09 17:01:55                                            */
+/*   Updated:  2023/02/11 15:15:07                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ void	derotate(t_stack *stack);
 int		ft_max(int x, int y);
 int		ft_min(int x, int y);
 void	sort_stack_a(t_stack *stack_a, t_stack *stack_b);
-void	split_a(t_stack *stack_a, t_stack *stack_b, int bit, t_rotation_preservation rotation_preservation);
+void	split_a(t_stack *stack_a, t_stack *stack_b, int bit);
 bool	something_to_do_in_a(t_stack stack_a, int bit);
 int		get_segment_size_in_a(t_stack stack_a);
 int		get_max_val_in_segment(t_stack stack, int segment_size);
-void	split_b(t_stack *stack_a, t_stack *stack_b, int bit, t_rotation_preservation rotation_preservation);
+void	split_b(t_stack *stack_a, t_stack *stack_b, int bit);
 bool	something_to_do_in_b(t_stack stack_b, int bit);
 int		get_segment_size_in_b(t_stack stack_b);
 int		get_min_val_in_segment(t_stack stack, int segment_size);

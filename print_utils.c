@@ -6,11 +6,12 @@
 /*   By: anon <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 23:14:06 by anon              #+#    #+#             */
-/*   Updated:  2023/02/04 17:27:19                                            */
+/*   Updated:  2023/02/11 16:17:44                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 void	print_error_and_exit(char *str)
 {
@@ -61,5 +62,6 @@ void	print_stacks(t_stack stack_a, t_stack stack_b)
 		stack_a.top--;
 		stack_b.top--;
 	}
-	write(2, "________________\n", 17);
+	write(2, "_____________________", 21);
+	write(2, "________________\n\n", 18);
 }
