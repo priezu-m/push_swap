@@ -6,7 +6,7 @@
 #    github:   https://github.com/priezu-m                                     #
 #    Licence:  GPLv3                                                           #
 #    Created:  2023/02/09 13:34:08                                             #
-#    Updated:  2023/02/09 13:42:38                                             #
+#    Updated:  2023/02/13 16:17:54                                             #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 SHELL :=			bash
 CC :=				clang
-CFLAGS :=			-g3 -O0 -Weverything
+CFLAGS :=			-ggdb -O0 -Weverything
 AR :=				ar
 ARFLAGS :=			rcs
 NORMINETTE :=		$(shell command -v norminette)

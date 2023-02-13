@@ -1,76 +1,119 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
+/*                                                                            */
 /*   Filename: basic_moves.c                                                  */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anon <marvin@42.fr>                        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 23:18:39 by anon              #+#    #+#             */
-/*   Updated:  2023/02/08 16:56:09                                            */
+/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
+/*   github:   https://github.com/priezu-m                                    */
+/*   Licence:  GPLv3                                                          */
+/*   Created:  2023/02/13 12:57:57                                            */
+/*   Updated:  2023/02/13 13:39:53                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	reverse_rotate(t_stack *stack)
+void	execute_pa(t_stacks *stacks)
 {
-	int  const	tmp = *stack->bottom;
-	int  const	size = (int )(stack->top - stack->bottom) + 1;
-
-	buffer(push_move, "rr", stack->id);
-	ft_memmove(stack->bottom, stack->bottom + 1, sizeof(int) * (unsigned)(size - 1));
-	*stack->top = tmp;
-	if (stack->rotation)
-		stack->rotation--;
-	else
-		stack->rotation = (int)(stack->top - stack->bottom);
+	if (stacks->stack_a.current_size == 0)
+		return ;
+	stacks->stack_a.top++;
+	stacks->stack_a.current_size++;
+	*stacks->stack_a.top = *stacks->stack_b.top;
+	stacks->stack_b.current_size--;
+	stacks->stack_b.top--;
 }
 
-void	rotate(t_stack *stack)
+void	execute_pb(t_stacks *stacks)
 {
-	int  const	tmp = *stack->top;
-	int  const	size = (int )(stack->top - stack->bottom) + 1;
-
-	buffer(push_move, "r", stack->id);
-	ft_memmove(stack->bottom + 1, stack->bottom, sizeof(int) * (unsigned)(size - 1));
-	*stack->bottom = tmp;
-	stack->rotation++;
+	if (stacks->stack_b.current_size == 0)
+		return ;
+	stacks->stack_b.top++;
+	stacks->stack_b.current_size++;
+	*stacks->stack_b.top = *stacks->stack_a.top;
+	stacks->stack_a.current_size--;
+	stacks->stack_a.top--;
 }
 
-void	push_from_to(t_stack *stack_a, t_stack *stack_b)
-{
-	buffer(push_move, "p", stack_b->id);
-	stack_b->top++;
-	*stack_b->top = *stack_a->top;
-	stack_a->top--;
-}
-
-void	swap(t_stack *stack)
+void	execute_sa(t_stacks *stacks)
 {
 	int	tmp;
 
-	if (stack->top > stack->bottom)
-	{
-		tmp = *stack->top;
-		*stack->top = *(stack->top - 1);
-		*(stack->top - 1) = tmp;
-	}
-	buffer(push_move, "s", stack->id);
+	if (stacks->stack_a.current_size < 2)
+		return ;
+	tmp = *stacks->stack_a.top;
+	*stacks->stack_a.top = *(stacks->stack_a.top - 1);
+	*(stacks->stack_a.top - 1) = tmp;
 }
 
-void	derotate(t_stack *stack)
+void	execute_sb(t_stacks *stacks)
 {
-	int  const	size = (int )(stack->top - stack->bottom) + 1;
+	int	tmp;
 
-	if (stack->rotation >  (size - stack->rotation))
-	{
-		while (size > stack->rotation)
-			rotate(stack);
-		stack->rotation = 0;
-	}
-	else if (size > stack->rotation)
-	{
-		while (stack->rotation)
-			reverse_rotate(stack);
-	}
+	if (stacks->stack_b.current_size < 2)
+		return ;
+	tmp = *stacks->stack_b.top;
+	*stacks->stack_b.top = *(stacks->stack_b.top - 1);
+	*(stacks->stack_b.top - 1) = tmp;
+}
+
+void	execute_ss(t_stacks *stacks)
+{
+	execute_sa(stacks);
+	execute_sb(stacks);
+}
+
+void	execute_ra(t_stacks *stacks)
+{
+	int	tmp;
+
+	if (stacks->stack_a.current_size < 2)
+		return ;
+	tmp = *stacks->stack_a.top;
+	memmove(stacks->stack_a.bottom + 1, stacks->stack_a.bottom, (size_t)(stacks->stack_a.current_size - 1) * sizeof (int));
+	*stacks->stack_a.bottom = tmp;
+}
+
+void	execute_rb(t_stacks *stacks)
+{
+	int	tmp;
+
+	if (stacks->stack_b.current_size < 2)
+		return ;
+	tmp = *stacks->stack_b.top;
+	memmove(stacks->stack_b.bottom + 1, stacks->stack_b.bottom, (size_t)(stacks->stack_b.current_size - 1) * sizeof (int));
+	*stacks->stack_b.bottom = tmp;
+}
+
+void	execute_rr(t_stacks *stacks)
+{
+	execute_ra(stacks);
+	execute_rb(stacks);
+}
+
+void	execute_rra(t_stacks *stacks)
+{
+	int	tmp;
+
+	if (stacks->stack_a.current_size < 2)
+		return ;
+	tmp = *stacks->stack_a.bottom;
+	memmove(stacks->stack_a.bottom, stacks->stack_a.bottom + 1, (size_t)(stacks->stack_a.current_size - 1) * sizeof(int));
+	*stacks->stack_a.top = tmp;
+}
+
+void	execute_rrb(t_stacks *stacks)
+{
+	int	tmp;
+
+	if (stacks->stack_b.current_size < 2)
+		return ;
+	tmp = *stacks->stack_b.bottom;
+	memmove(stacks->stack_b.bottom, stacks->stack_b.bottom + 1, (size_t)(stacks->stack_b.current_size - 1) * sizeof(int));
+	*stacks->stack_b.top = tmp;
+}
+
+void	execute_rrr(t_stacks *stacks)
+{
+	execute_rra(stacks);
+	execute_rrb(stacks);
 }
