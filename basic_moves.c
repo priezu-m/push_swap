@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/02/13 12:57:57                                            */
-/*   Updated:  2023/02/13 13:39:53                                            */
+/*   Updated:  2023/02/16 21:20:40                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	execute_pa(t_stacks *stacks)
 {
-	if (stacks->stack_a.current_size == 0)
+	if (stacks->stack_b.current_size == 0)
 		return ;
 	stacks->stack_a.top++;
 	stacks->stack_a.current_size++;
@@ -25,7 +25,7 @@ void	execute_pa(t_stacks *stacks)
 
 void	execute_pb(t_stacks *stacks)
 {
-	if (stacks->stack_b.current_size == 0)
+	if (stacks->stack_a.current_size == 0)
 		return ;
 	stacks->stack_b.top++;
 	stacks->stack_b.current_size++;
