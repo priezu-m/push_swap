@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   Filename: init_stacks_and_move_list.c                                    */
+/*   init_stacks_and_move_list.c                        :+:      :+:    :+:   */
 /*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/02/13 13:52:56                                            */
-/*   Updated:  2023/02/13 16:22:27                                            */
+/*   Updated: 2023/02/18 12:46:33 by anon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	init_stacks_and_move_list(t_stacks_and_move_list *stacks_and_move_list, int
 	stacks_and_move_list->stacks.stack_b.top = stacks_and_move_list->stacks.stack_b.bottom - 1;
 	stacks_and_move_list->stacks.stack_b.current_size = 0;
 	stacks_and_move_list->stacks.stack_b.max_size = argc - 1;
-	stacks_and_move_list->move_list.start = malloc((size_t)(argc - 1) * 3 * sizeof(t_move));
+	stacks_and_move_list->move_list.start = malloc((size_t)(argc - 1) * 1 * sizeof(t_move));
 	stacks_and_move_list->move_list.end = stacks_and_move_list->move_list.start - 1;
 	stacks_and_move_list->move_list.current_size = 0;
-	stacks_and_move_list->move_list.max_size = (argc - 1) * 3;
+	stacks_and_move_list->move_list.max_size = (argc - 1) * 1;
 	i = 0;
 	while (i < (argc - 1))
 	{

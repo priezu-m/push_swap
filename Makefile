@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                                              #
-#    Filename: Makefile                                                        #
+#    Makefile                                           :+:      :+:    :+:    #
 #    Author:   Peru Riezu <riezumunozperu@gmail.com>                           #
 #    github:   https://github.com/priezu-m                                     #
 #    Licence:  GPLv3                                                           #
 #    Created:  2023/02/09 13:34:08                                             #
-#    Updated:  2023/02/16 22:04:06                                             #
+#    Updated: 2023/02/18 12:08:02 by anon             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 SHELL :=			bash
 CC :=				clang
-CFLAGS :=			-ggdb -O0 -Weverything -fsanitize=leak,address,undefined
+CFLAGS :=			-O0 -flto -g3 -fsanitize=address
 AR :=				ar
 ARFLAGS :=			rcs
 NORMINETTE :=		$(shell command -v norminette)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   Filename: push_swap.h                                                    */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/02/13 12:31:15                                            */
-/*   Updated:  2023/02/13 15:45:35                                            */
+/*   Updated: 2023/02/18 00:54:53 by anon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,14 @@ void	print_stacks(t_stacks stacks);
 void	init_stacks_and_move_list(t_stacks_and_move_list *stacks_and_move_list, int argc, char **argv);
 void	destroy_stacks_and_move_list(t_stacks_and_move_list *stacks_and_move_list);
 
-void	test_move(t_move move, t_stacks_and_move_list *testing, t_stacks_and_move_list *best);
-void	do_move_and_add_to_list(t_move move, t_stacks_and_move_list *testing);
-void	undo_move_and_remove_from_list(t_move move, t_stacks_and_move_list *testing);
-bool	case_is_valid(t_stacks_and_move_list *testing);
+void	find_best(t_stacks_and_move_list *testing, t_stacks_and_move_list *best);
+void	test_move(t_move direction, t_move move, t_stacks_and_move_list *testing, t_stacks_and_move_list *best);
+void	do_move(t_move move, t_stacks_and_move_list *testing);
+void	undo_move(t_move move, t_stacks_and_move_list *testing);
+int		find_next_pb(t_move direction, t_stacks_and_move_list *testing);
 void	check_best(t_stacks_and_move_list *testing, t_stacks_and_move_list *best);
+void	travel_to(t_move direction, int distance, t_stacks_and_move_list *testing);
+void	come_back(t_move direction, int distance, t_stacks_and_move_list *testing);
 
 #endif
 
