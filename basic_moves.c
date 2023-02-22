@@ -5,115 +5,119 @@
 /*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
-/*   Created:  2023/02/13 12:57:57                                            */
-/*   Updated:  2023/02/16 21:20:40                                            */
+/*   Created:  2023/02/20 17:47:43                                            */
+/*   Updated:  2023/02/20 17:51:48                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#pragma GCC diagnostic warning "-Weverything"
 
-void	execute_pa(t_stacks *stacks)
-{
-	if (stacks->stack_b.current_size == 0)
-		return ;
-	stacks->stack_a.top++;
-	stacks->stack_a.current_size++;
-	*stacks->stack_a.top = *stacks->stack_b.top;
-	stacks->stack_b.current_size--;
-	stacks->stack_b.top--;
-}
+#include "basic_moves.h"
+#include <string.h>
+#include <stddef.h>
 
-void	execute_pb(t_stacks *stacks)
-{
-	if (stacks->stack_a.current_size == 0)
-		return ;
-	stacks->stack_b.top++;
-	stacks->stack_b.current_size++;
-	*stacks->stack_b.top = *stacks->stack_a.top;
-	stacks->stack_a.current_size--;
-	stacks->stack_a.top--;
-}
-
-void	execute_sa(t_stacks *stacks)
+void	rotate_a(t_stack_a *stack_a)
 {
 	int	tmp;
 
-	if (stacks->stack_a.current_size < 2)
+	if (stack_a->current_size < 2)
 		return ;
-	tmp = *stacks->stack_a.top;
-	*stacks->stack_a.top = *(stacks->stack_a.top - 1);
-	*(stacks->stack_a.top - 1) = tmp;
+	tmp	= *stack_a->top;
+	memmove(stack_a->bottom + 1, stack_a->bottom, (size_t)(stack_a->current_size - 1) * sizeof (int));
+	*stack_a->bottom = tmp;
 }
 
-void	execute_sb(t_stacks *stacks)
+void	rotate_b(t_stack_b *stack_b)
 {
 	int	tmp;
 
-	if (stacks->stack_b.current_size < 2)
+	if (stack_b->current_size < 2)
 		return ;
-	tmp = *stacks->stack_b.top;
-	*stacks->stack_b.top = *(stacks->stack_b.top - 1);
-	*(stacks->stack_b.top - 1) = tmp;
+	tmp = *stack_b->top;
+	memmove(stack_b->bottom + 1, stack_b->bottom, (size_t)(stack_b->current_size - 1) * sizeof (int));
+	*stack_b->bottom = tmp;
 }
 
-void	execute_ss(t_stacks *stacks)
+void	rotate_both(t_stack_a *stack_a, t_stack_b *stack_b)
 {
-	execute_sa(stacks);
-	execute_sb(stacks);
+	rotate_a(stack_a);
+	rotate_b(stack_b);
 }
 
-void	execute_ra(t_stacks *stacks)
+void	reverse_rotate_a(t_stack_a *stack_a)
 {
 	int	tmp;
 
-	if (stacks->stack_a.current_size < 2)
+	if (stack_a->current_size < 2)
 		return ;
-	tmp = *stacks->stack_a.top;
-	memmove(stacks->stack_a.bottom + 1, stacks->stack_a.bottom, (size_t)(stacks->stack_a.current_size - 1) * sizeof (int));
-	*stacks->stack_a.bottom = tmp;
+	tmp = *stack_a->bottom;
+	memmove(stack_a->bottom, stack_a->bottom + 1, (size_t)(stack_a->current_size - 1) * sizeof (int));
+	*stack_a->top = tmp;
 }
 
-void	execute_rb(t_stacks *stacks)
+void	reverse_rotate_b(t_stack_b *stack_b)
 {
 	int	tmp;
 
-	if (stacks->stack_b.current_size < 2)
+	if (stack_b->current_size < 2)
 		return ;
-	tmp = *stacks->stack_b.top;
-	memmove(stacks->stack_b.bottom + 1, stacks->stack_b.bottom, (size_t)(stacks->stack_b.current_size - 1) * sizeof (int));
-	*stacks->stack_b.bottom = tmp;
+	tmp = *stack_b->bottom;
+	memmove(stack_b->bottom, stack_b->bottom + 1, (size_t)(stack_b->current_size - 1) * sizeof (int));
+	*stack_b->top = tmp;
 }
 
-void	execute_rr(t_stacks *stacks)
+void	reverse_rotate_both(t_stack_a *stack_a, t_stack_b *stack_b)
 {
-	execute_ra(stacks);
-	execute_rb(stacks);
+	reverse_rotate_a(stack_a);
+	reverse_rotate_b(stack_b);
 }
 
-void	execute_rra(t_stacks *stacks)
+void	swap_a(t_stack_a *stack_a)
 {
 	int	tmp;
 
-	if (stacks->stack_a.current_size < 2)
+	if (stack_a->current_size < 2)
 		return ;
-	tmp = *stacks->stack_a.bottom;
-	memmove(stacks->stack_a.bottom, stacks->stack_a.bottom + 1, (size_t)(stacks->stack_a.current_size - 1) * sizeof(int));
-	*stacks->stack_a.top = tmp;
+	tmp = *stack_a->top;
+	*stack_a->top = *(stack_a->top - 1);
+	*(stack_a->top - 1) = tmp;
 }
 
-void	execute_rrb(t_stacks *stacks)
+void	swap_b(t_stack_b *stack_b)
 {
 	int	tmp;
 
-	if (stacks->stack_b.current_size < 2)
+	if (stack_b->current_size < 2)
 		return ;
-	tmp = *stacks->stack_b.bottom;
-	memmove(stacks->stack_b.bottom, stacks->stack_b.bottom + 1, (size_t)(stacks->stack_b.current_size - 1) * sizeof(int));
-	*stacks->stack_b.top = tmp;
+	tmp = *stack_b->top;
+	*stack_b->top = *(stack_b->top - 1);
+	*(stack_b->top - 1) = tmp;
 }
 
-void	execute_rrr(t_stacks *stacks)
+void	swap_both(t_stack_a *stack_a, t_stack_b *stack_b)
 {
-	execute_rra(stacks);
-	execute_rrb(stacks);
+	swap_a(stack_a);
+	swap_b(stack_b);
+}
+
+void	push_to_a(t_stack_a *stack_a, t_stack_b *stack_b)
+{
+	if (stack_b->current_size < 1)
+		return ;
+	stack_a->top++;
+	stack_a->current_size++;
+	*stack_a->top = *stack_b->top;
+	stack_b->top--;
+	stack_b->current_size--;
+}
+
+void	push_to_b(t_stack_a *stack_a, t_stack_b *stack_b)
+{
+	if (stack_a->current_size < 1)
+		return ;
+	stack_b->top++;
+	stack_b->current_size++;
+	*stack_b->top = *stack_a->top;
+	stack_a->top--;
+	stack_a->current_size--;
 }

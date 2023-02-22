@@ -5,45 +5,74 @@
 /*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
-/*   Created:  2023/02/07 11:33:09                                            */
-/*   Updated:  2023/02/08 16:55:49                                            */
+/*   Created:  2023/02/20 17:51:55                                            */
+/*   Updated:  2023/02/21 13:53:41                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#pragma GCC diagnostic warning "-Weverything"
 
-void	buffer(t_buffer_action act, char mv[2], char id)
+#include "buffer.h"
+#include "compact_buff.h"
+#include "stacks.h"
+#include <stdio.h>
+
+#define BUFF_SIZE 50000
+
+static void	flush_before_exit(void)__attribute__((destructor));
+
+static void	flush_before_exit(void)
 {
-	static char		buff[10000][4];
-	static size_t	i;
-	size_t			j;
-	size_t			k;
+	buffer(flush, none);
+}
 
-	if (act == push_move)
+static void	print_move(t_move move)
+{
+	if (move == ra)
+		printf("ra\n");
+	else if (move == rb)
+		printf("rb\n");
+	else if (move == rr)
+		printf("rr\n");
+	else if (move == rra)
+		printf("rra\n");
+	else if (move == rrb)
+		printf("rrb\n");
+	else if (move == rrr)
+		printf("rrr\n");
+	else if (move == sa)
+		printf("sa\n");
+	else if (move == sb)
+		printf("sb\n");
+	else if (move == ss)
+		printf("ss\n");
+	else if (move == pa)
+		printf("pa\n");
+	else if (move == pb)
+		printf("pb\n");
+}
+
+void	buffer(t_buffer_action action, t_move move)
+{
+	static t_move	buff[BUFF_SIZE];
+	static int		i;
+	int				j;
+
+	if (action == push)
 	{
-		if (i == 10000)
-			buffer(flush_buffer, 0, 0);
-		buff[i][0] = mv[0];
-		buff[i][1] = mv[1];
-		buff[i][2] = id;
-		buff[i][3] = '\0';
+		if (i >= BUFF_SIZE)
+			buffer(flush, none);
+		buff[i] = move;
+		i -= compact_buff(buff, i);
 		i++;
 	}
-	else
+	else if (action == flush)
 	{
 		j = 0;
 		while (j < i)
 		{
-			k = 0;
-			while (k < 4)
-			{
-				if (buff[j][k])
-					write(1, &buff[j][k], 1);
-				k++;
-			}
-			write(1, (char []){'\n'}, 1);
+			print_move(buff[j]);
 			j++;
 		}
-		i = 0;
 	}
 }

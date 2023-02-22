@@ -5,38 +5,34 @@
 /*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
-/*   Created:  2023/02/13 13:41:05                                            */
-/*   Updated:  2023/02/13 16:23:56                                            */
+/*   Created:  2023/02/22 17:57:21                                            */
+/*   Updated:  2023/02/22 18:08:02                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#pragma GCC diagnostic warning "-Weverything"
+
+#include "stacks.h"
 #include <stdio.h>
 
 void	print_stacks(t_stacks stacks)
 {
 	while (stacks.stack_a.current_size || stacks.stack_b.current_size)
 	{
-		if (stacks.stack_a.current_size > stacks.stack_b.current_size)
+		if (stacks.stack_a.current_size >= stacks.stack_b.current_size)
 		{
-			fprintf(stderr, "%8d\t|\n", *stacks.stack_a.top);
+			printf("%d", *stacks.stack_a.top);
 			stacks.stack_a.current_size--;
 			stacks.stack_a.top--;
 		}
-		else if (stacks.stack_b.current_size > stacks.stack_a.current_size)
+		printf("\t|");
+		if (stacks.stack_b.current_size > stacks.stack_a.current_size)
 		{
-			fprintf(stderr, "\t\t|%8d\n", *stacks.stack_b.top);
+			printf("\t%d", *stacks.stack_b.top);
 			stacks.stack_b.current_size--;
 			stacks.stack_b.top--;
 		}
-		else
-		{
-			fprintf(stderr, "%8d\t|%8d\n", *stacks.stack_a.top, *stacks.stack_b.top);
-			stacks.stack_b.current_size--;
-			stacks.stack_a.current_size--;
-			stacks.stack_b.top--;
-			stacks.stack_a.top--;
-		}
+		printf("\n");
 	}
-	fprintf(stderr, "__________________________________\n");
+	printf("--------------------\n");
 }
