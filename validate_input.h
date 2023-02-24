@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/02/20 11:12:51                                            */
-/*   Updated:  2023/02/21 16:41:42                                            */
+/*   Updated:  2023/02/24 16:52:23                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 # include <stdbool.h>
 
 void	validate_input(int argc, char **argv);
-bool	is_sorted(int *arr, int size);
+bool	is_sorted(int *arr, int size, bool cmp(int x, int y));
 
 #endif

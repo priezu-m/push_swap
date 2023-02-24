@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/02/20 17:55:44                                            */
-/*   Updated:  2023/02/21 13:29:29                                            */
+/*   Updated:  2023/02/24 16:53:49                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ void	validate_input(int argc, char **argv)
 	}
 }
 
-bool	is_sorted(int *arr, int size)
+bool	is_sorted(int *arr, int size, bool cmp(int x, int y))
 {
 	int	i;
 
 	i = 0;
-	while (i < size)
+	while (i < size - 1)
 	{
-		if (arr[i] != i)
+		if (cmp(arr[i], arr [i + 1]) == false)
 			return (false);
 		i++;
 	}

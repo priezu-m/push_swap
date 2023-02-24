@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   Filename: main.c                                                         */
+/*   Filename: greater_lesser.h                                               */
 /*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
-/*   Created:  2023/02/20 17:55:35                                            */
-/*   Updated:  2023/02/24 17:11:08                                            */
+/*   Created:  2023/02/24 16:54:20                                            */
+/*   Updated:  2023/02/24 16:56:46                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma GCC diagnostic warning "-Weverything"
 
-#include "stacks.h"
-#include "validate_input.h"
-#include "greater_lesser.h"
+#ifndef GREATER_LESSER
+# define GREATER_LESSER
 
-int main(int argc, char **argv)
-{
-	t_stacks	stacks;
+# include <stdbool.h>
 
-	validate_input(argc, argv);
-	init_stacks(&stacks, argc, argv);
-	if (is_sorted(stacks.stack_a.bottom, stacks.stack_a.current_size, greater))
-	{
-		destroy_stacks(stacks);
-		return (0);
-	}
-	sort_stacks(stacks);
-	destroy_stacks(stacks);
-}
+bool	greater(int x, int y);
+bool	lesser(int x, int y);
+
+#endif
