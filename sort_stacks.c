@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   sort_stacks.c                                      :+:      :+:    :+:   */
+/*   Filename: sort_stacks.c                                                  */
 /*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/02/22 17:54:57                                            */
-/*   Updated: 2023/02/25 19:49:48 by anon             ###   ########.fr       */
+/*   Updated:  2023/03/03 23:11:14                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,43 @@
 #include "stacks.h"
 #include "greater_lesser.h"
 #include "validate_input.h"
+#include "final_chunck_sort.h"
 #include "ft_math.h"
 
-static void	split_b(t_stacks *stacks, int chunk_size);
-
-static void	split_a(t_stacks *stacks, int chunk_size)
+static void	set_up(t_stacks *stacks)
 {
-	int	a_pivot;
-	int	b_pivot;
+	int	aux;
+	int	pivot_a;
+	int	pivot_b;
 
-	a_pivot = ceil_div(stacks->stack_a.current_size, 2);
-	a_pivot = a_pivot + !!(a_pivot % 2);
-	b_pivot = a_pivot / 2;
+	pivot_a = ceil_div(stacks->stack_a.current_size, 2);
+	pivot_b = pivot_a / 2;
 	while (stacks->stack_a.current_size > 4)
 	{
-
-		a_pivot = ceil_div(stacks->stack_a.current_size, 2);
-		a_pivot = a_pivot + !!(a_pivot % 2);
-		b_pivot = (a_pivot + (stacks->stack_a.max_size - stacks->stack_a.current_size)) / 2;
+		aux = stacks->stack_a.current_size;
+		while (aux)
+		{
+			if (*stacks->stack_a.top < pivot_a)
+			{
+				do_move(pb, stacks);
+				if (*stacks->stack_b.top < pivot_b)
+					do_move(rb, stacks);
+			}
+			else
+				do_move(ra, stacks);
+			aux--;
+		}
+		print_stacks(*stacks);
+		aux = pivot_a;
+		pivot_a = ceil_div(pivot_a + stacks->stack_a.max_size, 2);
+		pivot_b = (aux + pivot_a) / 2;
 	}
-
-}
-
-static void	split_b(t_stacks *stacks, int chunk_size)
-{
+	final_chunck_sort(stacks);
 }
 
 void	sort_stacks(t_stacks stacks)
 {
 	print_stacks(stacks);
-	split_a(&stacks, stacks.stack_a.current_size);
+	set_up(&stacks);
+	print_stacks(stacks);
 }
