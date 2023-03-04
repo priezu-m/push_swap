@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/02/20 17:52:14                                            */
-/*   Updated:  2023/02/22 17:41:58                                            */
+/*   Updated:  2023/03/04 18:14:21                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	compact_buff(t_move *buff, int i)
 	int	k;
 	int	count;
 
-	if ((i == 0) || (buff[i] == pa) || (buff[i] == pb))
+	if (i == 0)
 		return (0);
 	count = 0;
 	k = i;
