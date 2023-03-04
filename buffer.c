@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/02/20 17:51:55                                            */
-/*   Updated:  2023/02/21 13:53:41                                            */
+/*   Updated:  2023/03/04 00:00:48                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ void	buffer(t_buffer_action action, t_move move)
 			print_move(buff[j]);
 			j++;
 		}
+		i = 0;
 	}
 }
