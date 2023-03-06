@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/02/22 17:54:57                                            */
-/*   Updated:  2023/03/04 18:00:22                                            */
+/*   Updated:  2023/03/06 18:30:06                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "greater_lesser.h"
 #include "validate_input.h"
 #include "final_chunck_sort.h"
+#include "pull_from_b.h"
 #include "ft_math.h"
 #include <stdlib.h>
 
@@ -58,6 +59,7 @@ static void	set_up(t_stacks *stacks, int (*chunk_sizes)[2])
 	}
 	final_chunck_sort(stacks, chunk_sizes, i);
 	i--;
+	pull_from_b(stacks, chunk_sizes, i);
 }
 
 void	sort_stacks(t_stacks stacks)
