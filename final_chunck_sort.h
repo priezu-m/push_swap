@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/03/03 23:10:26                                            */
-/*   Updated:  2023/03/04 17:56:38                                            */
+/*   Updated:  2023/03/09 17:41:36                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 
 # include "stacks.h"
 
-void	final_chunck_sort(t_stacks *stacks, int (*chunk_sizes)[2], int chunk_number);
-void	sort4(t_stacks *stacks);
+void	final_chunck_sort_set_up(t_stacks *stacks, int (*chunk_sizes)[2], int chunk_number);
+void	final_chunck_sort(t_stacks *stacks, int (*chunk_sizes)[2], int chunk_number, int chunk_size);
+void	sort4_set_up(t_stacks *stacks);
 
 #endif
