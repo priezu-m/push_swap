@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/03/03 23:12:02                                            */
-/*   Updated:  2023/03/09 17:19:21                                            */
+/*   Updated:  2023/03/12 15:21:40                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 static void	carry_back_3(t_stacks *stacks)
 {
-	if ((*stacks->stack_b.top < *(stacks->stack_b.top - 1)))
+	if (stacks->stack_b.current_size > 1 && (*stacks->stack_b.top < *(stacks->stack_b.top - 1)))
 		do_move(sb, stacks);
 	do_move(pa, stacks);
 	do_move(pa, stacks);
@@ -26,13 +26,13 @@ static void	carry_back_3(t_stacks *stacks)
 
 static void	carry_back_4(t_stacks *stacks)
 {
-	if ((*stacks->stack_b.top < *(stacks->stack_b.top - 1)))
+	if (stacks->stack_b.current_size > 1 && (*stacks->stack_b.top < *(stacks->stack_b.top - 1)))
 		do_move(sb, stacks);
 	do_move(pa, stacks);
 	do_move(pa, stacks);
 	do_move(rrb, stacks);
 	do_move(rrb, stacks);
-	if ((*stacks->stack_b.top < *(stacks->stack_b.top - 1)))
+	if (stacks->stack_b.current_size > 1 && (*stacks->stack_b.top < *(stacks->stack_b.top - 1)))
 		do_move(sb, stacks);
 	do_move(pa, stacks);
 	do_move(pa, stacks);
@@ -46,7 +46,7 @@ static void	sort3(t_stacks *stacks)
 		if (*stacks->stack_a.top > *(stacks->stack_a.top - 1))
 		{
 			do_move(sa, stacks);
-			if ((*stacks->stack_b.top < *(stacks->stack_b.top - 1)))
+			if (stacks->stack_b.current_size > 1 && (*stacks->stack_b.top < *(stacks->stack_b.top - 1)))
 				do_move(sb, stacks);
 		}
 		do_move(pa, stacks);
@@ -56,7 +56,7 @@ static void	sort3(t_stacks *stacks)
 		if (*(stacks->stack_a.top) == stacks->stack_a.max_size - 2)
 		{
 			do_move(sa, stacks);
-			if ((*stacks->stack_b.top < *(stacks->stack_b.top - 1)))
+			if (stacks->stack_b.current_size > 1 && (*stacks->stack_b.top < *(stacks->stack_b.top - 1)))
 				do_move(sb, stacks);
 		}
 		else
@@ -67,7 +67,7 @@ static void	sort3(t_stacks *stacks)
 		if (*stacks->stack_a.top > *(stacks->stack_a.top - 1))
 		{
 			do_move(sa, stacks);
-			if ((*stacks->stack_b.top < *(stacks->stack_b.top - 1)))
+			if (stacks->stack_b.current_size > 1 && (*stacks->stack_b.top < *(stacks->stack_b.top - 1)))
 				do_move(sb, stacks);
 		}
 		do_move(rra, stacks);
@@ -85,7 +85,8 @@ void	final_chunck_sort_set_up(t_stacks *stacks, int (*chunk_sizes)[2], int chunk
 	if (stacks->stack_a.current_size == 2)
 	{
 		sort2(stacks);
-		carry_back_3(stacks);
+		if (chunk_number)
+			carry_back_3(stacks);
 	}
 	else if (stacks->stack_a.current_size == 3)
 	{

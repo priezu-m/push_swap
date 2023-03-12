@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/03/09 16:38:05                                            */
-/*   Updated:  2023/03/09 17:41:55                                            */
+/*   Updated:  2023/03/12 16:50:38                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,13 @@ void sort_chunk_in_a(t_stacks *stacks, int chunk_size)
 		pivot_a = pivot_a + chunk_size;
 		pivot_a = ceil_div(pivot_a, 2);
 		pivot_b = (aux + pivot_a) / 2;
+		print_stacks(*stacks);
 	}
 	final_chunck_sort(stacks, chunk_sizes, i, chunk_size);
-	i--;
-	pull_from_b(stacks, chunk_sizes, i);
+	print_stacks(*stacks);
+	if (chunk_size != 4)
+		i--;
+	if (i > 0)
+		pull_from_b(stacks, chunk_sizes, i);
 	free(chunk_sizes);
 }

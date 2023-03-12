@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/03/06 16:33:43                                            */
-/*   Updated:  2023/03/06 18:10:52                                            */
+/*   Updated:  2023/03/12 17:02:55                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 static void	pull_chunk(t_stacks *stacks, int chunk_size)
 {
 	int	aux;
-	int	count;
+	int	count[2];
 	int	pivot;
 	int	pivot2;
 
@@ -37,7 +37,8 @@ static void	pull_chunk(t_stacks *stacks, int chunk_size)
 			pivot = get_min(stacks->stack_b.top - (chunk_size - 1), chunk_size) + (chunk_size / 2);
 			pivot2 = pivot + (ceil_div(chunk_size, 2) / 2);
 			aux = chunk_size;
-			count = 0;
+			count[0] = 0;
+			count[1] = 0;
 			while (aux)
 			{
 				if (*stacks->stack_b.top < pivot)
@@ -45,20 +46,25 @@ static void	pull_chunk(t_stacks *stacks, int chunk_size)
 				else
 				{
 					do_move(pa, stacks);
+					count[0]++;
 					chunk_size--;
 					if (*stacks->stack_a.top < pivot2)
 					{
 						do_move(ra, stacks);
-						count++;
+						count[0]--;
+						count[1]++;
 					}
 				}
 				aux--;
 			}
-			sort_chunk_in_a(stacks, ceil_div(ceil_div(chunk_size, 2), 2));
-			while (count)
+			print_stacks(*stacks);
+			sort_chunk_in_a(stacks, count[0]);
+			print_stacks(*stacks);
+			aux = count[1];
+			while (aux)
 			{
 				do_move(rra, stacks);
-				count--;
+				aux--;
 			}
 			aux = chunk_size;
 			while (aux)
@@ -66,7 +72,9 @@ static void	pull_chunk(t_stacks *stacks, int chunk_size)
 				do_move(rrb, stacks);
 				aux--;
 			}
-			sort_chunk_in_a(stacks, ceil_div(chunk_size / 2, 2));
+			print_stacks(*stacks);
+			sort_chunk_in_a(stacks, count[1]);
+			print_stacks(*stacks);
 		}
 	}
 }
@@ -88,7 +96,7 @@ void	pull_from_b(t_stacks *stacks, int (*chunk_sizes)[2], int chunk_count)
 				aux--;
 			}
 		}
-		pull_chunk(stacks, chunk_sizes[chunk_count - 1][0]);
+		pull_chunk(stacks, chunk_sizes[chunk_count - 1][1]);
 		chunk_count--;
 	}
 }

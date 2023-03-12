@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/03/06 17:23:48                                            */
-/*   Updated:  2023/03/06 17:47:02                                            */
+/*   Updated:  2023/03/12 15:54:47                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	atom_pull_from_b(t_stacks *stacks, int chunk_size)
 			do_move(pa, stacks);
 			if ((*stacks->stack_a.top > *(stacks->stack_a.top - 1)))
 				do_move(sa, stacks);
-			if ((*stacks->stack_b.top < *(stacks->stack_b.top - 1)))
+			if (stacks->stack_b.current_size > 1 && (*stacks->stack_b.top < *(stacks->stack_b.top - 1)))
 				do_move(sb, stacks);
 			break ;
 		}
