@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   Filename: sort_stacks.c                                                  */
+/*   sort_stacks.c                                      :+:      :+:    :+:   */
 /*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/02/22 17:54:57                                            */
-/*   Updated:  2023/03/12 16:06:29                                            */
+/*   Updated: 2023/03/14 11:20:22 by anon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ static void	set_up(t_stacks *stacks, int (*chunk_sizes)[2])
 			aux--;
 		}
 		i++;
-		print_stacks(*stacks);
 		aux = pivot_a;
 		pivot_a = ceil_div(pivot_a + stacks->stack_a.max_size, 2);
 		pivot_b = (aux + pivot_a) / 2;
@@ -68,7 +67,7 @@ void	sort_stacks(t_stacks stacks)
 {
 	int	(* const chunk_sizes)[2] = calloc(sizeof(int) * 2, (size_t)ceil_log2(stacks.stack_a.max_size));
 
-	print_stacks(stacks);
+//	print_stacks(stacks);
 	set_up(&stacks, chunk_sizes);
 	print_stacks(stacks);
 	free(chunk_sizes);

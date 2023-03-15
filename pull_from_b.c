@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   Filename: pull_from_b.c                                                  */
+/*   pull_from_b.c                                      :+:      :+:    :+:   */
 /*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/03/06 16:33:43                                            */
-/*   Updated:  2023/03/12 17:02:55                                            */
+/*   Updated: 2023/03/14 09:29:43 by anon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,7 @@ static void	pull_chunk(t_stacks *stacks, int chunk_size)
 				}
 				aux--;
 			}
-			print_stacks(*stacks);
 			sort_chunk_in_a(stacks, count[0]);
-			print_stacks(*stacks);
 			aux = count[1];
 			while (aux)
 			{
@@ -67,14 +65,15 @@ static void	pull_chunk(t_stacks *stacks, int chunk_size)
 				aux--;
 			}
 			aux = chunk_size;
-			while (aux)
+			if (aux != stacks->stack_b.current_size)
 			{
-				do_move(rrb, stacks);
-				aux--;
+				while (aux)
+				{
+					do_move(rrb, stacks);
+					aux--;
+				}
 			}
-			print_stacks(*stacks);
 			sort_chunk_in_a(stacks, count[1]);
-			print_stacks(*stacks);
 		}
 	}
 }

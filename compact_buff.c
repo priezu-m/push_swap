@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   Filename: compact_buff.c                                                 */
+/*   compact_buff.c                                     :+:      :+:    :+:   */
 /*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/02/20 17:52:14                                            */
-/*   Updated:  2023/03/04 18:14:21                                            */
+/*   Updated: 2023/03/14 11:15:23 by anon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 static int	compact_opposite(t_move *buff, int *i, int *j, int *k)
 {
 	buff[*j] = neutral_of(buff[*k]);
-	memmove(&buff[(*j) + 1], &buff[(*j) + 2], (size_t)((*i) - ((*j) + 1)) * sizeof(int));
+	memmove(&buff[(*k)], &buff[(*k) + 1], (size_t)((*i) - (*k)) * sizeof(int));
 	(*i)--;
 	return (1);
 }
@@ -31,15 +31,17 @@ static int	compact_opposite(t_move *buff, int *i, int *j, int *k)
 static int	compact_half_inverse(t_move *buff, int *i, int *j, int *k)
 {
 	buff[*j] = half_inverse_of(buff[*j], buff[*k]);
-	memmove(&buff[(*j) + 1], &buff[(*j) + 2], (size_t)((*i) - ((*j) + 1)) * sizeof(int));
+	memmove(&buff[(*k)], &buff[(*k) + 1], (size_t)((*i) - (*k)) * sizeof(int));
 	(*i)--;
 	return (1);
 }
 
-static int	compact_inverse(t_move *buff, int *i, int *j)
+static int	compact_inverse(t_move *buff, int *i, int *j, int *k)
 {
-	memmove(&buff[*j], &buff[(*j) + 2], (size_t)((*i) - ((*j) + 1)) * sizeof(int));
-	(*i) -= 2;
+	memmove(&buff[(*k)], &buff[(*k) + 1], (size_t)((*i) - (*k)) * sizeof(int));
+	(*i)--;
+	memmove(&buff[*j], &buff[(*j) + 1], (size_t)((*i) - ((*j))) * sizeof(int));
+	(*i)--;
 	return (2);
 }
 
@@ -49,7 +51,7 @@ static int	compact_buff_internal(t_move *buff, int *i, int *j, int *k)
 
 	count = 0;
 	if (inverse_to_each_other(buff[*j], buff[*k]))
-		count += compact_inverse(buff, i, j);
+		count += compact_inverse(buff, i, j, k);
 	else if (opposite_to_each_other(buff[*j], buff[*k]))
 		count += compact_opposite(buff, i, j, k);
 	else if (half_inverse_to_each_other(buff[*j], buff[*k]))
@@ -60,7 +62,7 @@ static int	compact_buff_internal(t_move *buff, int *i, int *j, int *k)
 	while (1)
 	{
 		if (inverse_to_each_other(buff[*j], buff[*k]))
-			count += compact_inverse(buff, i, j);
+			count += compact_inverse(buff, i, j, k);
 		else if (opposite_to_each_other(buff[*j], buff[*k]))
 			count += compact_opposite(buff, i, j, k);
 		else if (half_inverse_to_each_other(buff[*j], buff[*k]))

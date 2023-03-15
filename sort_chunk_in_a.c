@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   Filename: sort_chunk_in_a.c                                              */
+/*   sort_chunk_in_a.c                                  :+:      :+:    :+:   */
 /*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/03/09 16:38:05                                            */
-/*   Updated:  2023/03/12 16:50:38                                            */
+/*   Updated: 2023/03/14 09:14:32 by anon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void sort_chunk_in_a(t_stacks *stacks, int chunk_size)
 	int				pivot_b;
 	int				i;
 
-	pivot_a = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size) + chunk_size;
-	pivot_a = ceil_div(pivot_a, 2);
+	pivot_a = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size);
+	pivot_a = ceil_div(pivot_a + pivot_a + chunk_size, 2);
 	pivot_b = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size) + pivot_a;
 	pivot_b = pivot_b / 2;
 	i = 0;
@@ -53,14 +53,18 @@ void sort_chunk_in_a(t_stacks *stacks, int chunk_size)
 		}
 		i++;
 		chunk_size /= 2;
+		aux = chunk_size;
+		while (aux)
+		{
+			do_move(rra, stacks);
+			aux--;
+		}
 		aux = pivot_a;
 		pivot_a = pivot_a + chunk_size;
 		pivot_a = ceil_div(pivot_a, 2);
 		pivot_b = (aux + pivot_a) / 2;
-		print_stacks(*stacks);
 	}
 	final_chunck_sort(stacks, chunk_sizes, i, chunk_size);
-	print_stacks(*stacks);
 	if (chunk_size != 4)
 		i--;
 	if (i > 0)

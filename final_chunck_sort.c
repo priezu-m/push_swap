@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   Filename: final_chunck_sort.c                                            */
+/*   final_chunck_sort.c                                :+:      :+:    :+:   */
 /*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/03/09 17:33:50                                            */
-/*   Updated:  2023/03/12 15:21:18                                            */
+/*   Updated: 2023/03/14 09:46:24 by anon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ static void	sort2(t_stacks *stacks)
 
 static void	sort3(t_stacks *stacks)
 {
-	if (*stacks->stack_a.top == stacks->stack_a.max_size - 3)
+	int const	min = get_min(stacks->stack_a.top - 2, 3);
+
+	if (*stacks->stack_a.top == min)
 	{
 		do_move(pb, stacks);
 		if (*stacks->stack_a.top > *(stacks->stack_a.top - 1))
@@ -58,9 +60,9 @@ static void	sort3(t_stacks *stacks)
 		}
 		do_move(pa, stacks);
 	}
-	else if (*(stacks->stack_a.top - 1) == stacks->stack_a.max_size - 3)
+	else if (*(stacks->stack_a.top - 1) == min)
 	{
-		if (*(stacks->stack_a.top) == stacks->stack_a.max_size - 2)
+		if (*(stacks->stack_a.top) == min + 1)
 		{
 			do_move(sa, stacks);
 			if (stacks->stack_b.current_size > 1 && (*stacks->stack_b.top < *(stacks->stack_b.top - 1)))
@@ -76,7 +78,7 @@ static void	sort3(t_stacks *stacks)
 			do_move(rra, stacks);
 		}
 	}
-	else if (*(stacks->stack_a.top - 2) == stacks->stack_a.max_size - 3)
+	else if (*(stacks->stack_a.top - 2) == min)
 	{
 		if (*stacks->stack_a.top > *(stacks->stack_a.top - 1))
 		{
@@ -87,7 +89,6 @@ static void	sort3(t_stacks *stacks)
 		do_move(ra, stacks);
 		do_move(ra, stacks);
 		do_move(pb, stacks);
-		do_move(rra, stacks);
 		do_move(rra, stacks);
 		do_move(rra, stacks);
 		do_move(pa, stacks);
