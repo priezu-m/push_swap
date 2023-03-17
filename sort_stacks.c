@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/02/22 17:54:57                                            */
-/*   Updated: 2023/03/14 11:20:22 by anon             ###   ########.fr       */
+/*   Updated: 2023/03/17 10:15:48 by anon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ void	sort_stacks(t_stacks stacks)
 
 //	print_stacks(stacks);
 	set_up(&stacks, chunk_sizes);
-	print_stacks(stacks);
+//	print_stacks(stacks);
 	free(chunk_sizes);
 }
