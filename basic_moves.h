@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: basic_moves.h                                                  */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/02/20 13:17:34                                            */
-/*   Updated:  2023/02/21 16:42:26                                            */
+/*                                                        :::      ::::::::   */
+/*   basic_moves.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/18 20:37:33 by evaluation        #+#    #+#             */
+/*   Updated: 2023/03/18 20:37:43 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma GCC diagnostic warning "-Weverything"
-
-#ifndef BASIC_MOVES
-# define BASIC_MOVES
+#ifndef BASIC_MOVES_H
+# define BASIC_MOVES_H
 
 # include "stacks.h"
 

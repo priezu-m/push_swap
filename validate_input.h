@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: validate_input.h                                               */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/02/20 11:12:51                                            */
-/*   Updated:  2023/02/24 16:52:23                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_input.h                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/18 21:12:47 by evaluation        #+#    #+#             */
+/*   Updated: 2023/03/18 21:12:49 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#pragma GCC diagnostic warning "-Weverything"
 
 #ifndef VALIDATE_INPUT_H
 # define VALIDATE_INPUT_H

@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
+/*                                                        :::      ::::::::   */
 /*   compact_buff.c                                     :+:      :+:    :+:   */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/02/20 17:52:14                                            */
-/*   Updated: 2023/03/14 11:15:23 by anon             ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/18 20:38:47 by evaluation        #+#    #+#             */
+/*   Updated: 2023/03/18 20:38:49 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#pragma GCC diagnostic warning "-Weverything"
 
 #include "compact_buff.h"
 #include "move_relations.h"

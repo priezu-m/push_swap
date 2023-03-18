@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ceil_log2.c                                        :+:      :+:    :+:   */
+/*   basic_moves3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 20:38:29 by evaluation        #+#    #+#             */
-/*   Updated: 2023/03/18 20:38:31 by evaluation       ###   ########.fr       */
+/*   Created: 2023/03/18 20:36:57 by evaluation        #+#    #+#             */
+/*   Updated: 2023/03/18 20:37:21 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_math.h"
-#include <stdbool.h>
+#include "basic_moves.h"
+#include <string.h>
+#include <stddef.h>
 
-int	ceil_log2(int x)
+void	push_to_b(t_stack_a *stack_a, t_stack_b *stack_b)
 {
-	int		res;
-	bool	remainder;
-
-	res = 0;
-	remainder = false;
-	while (x > 1)
-	{
-		res++;
-		if (!remainder)
-			remainder = x % 2;
-		x /= 2;
-	}
-	return (remainder + res);
+	if (stack_a->current_size < 1)
+		return ;
+	stack_b->top++;
+	stack_b->current_size++;
+	*stack_b->top = *stack_a->top;
+	stack_a->top--;
+	stack_a->current_size--;
 }

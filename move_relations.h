@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: move_relations.h                                               */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/02/21 16:40:33                                            */
-/*   Updated:  2023/02/22 16:48:48                                            */
+/*                                                        :::      ::::::::   */
+/*   move_relations.h                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/18 21:05:14 by evaluation        #+#    #+#             */
+/*   Updated: 2023/03/18 21:05:20 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#pragma GCC diagnostic warning "-Weverything"
 
 #ifndef  MOVE_RELATIONS_H
 # define  MOVE_RELATIONS_H
@@ -26,4 +24,3 @@ bool	opposite_to_each_other(t_move x, t_move y);
 t_move	neutral_of(t_move x);
 
 #endif
-

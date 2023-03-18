@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: compact_buff.h                                                 */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/02/20 16:30:21                                            */
-/*   Updated:  2023/02/21 16:41:54                                            */
+/*                                                        :::      ::::::::   */
+/*   compact_buff.h                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/18 20:38:58 by evaluation        #+#    #+#             */
+/*   Updated: 2023/03/18 20:39:08 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma GCC diagnostic warning "-Weverything"
-
-#ifndef COMPACT_BUFF
-# define COMPACT_BUFF
+#ifndef COMPACT_BUFF_H
+# define COMPACT_BUFF_H
 
 # include "stacks.h"
 

@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: greater_lesser.c                                               */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/02/24 16:55:52                                            */
-/*   Updated:  2023/02/24 16:57:20                                            */
+/*                                                        :::      ::::::::   */
+/*   greater_lesser.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/18 21:03:58 by evaluation        #+#    #+#             */
+/*   Updated: 2023/03/18 21:04:00 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#pragma GCC diagnostic warning "-Weverything"
 
 #include "greater_lesser.h"
 

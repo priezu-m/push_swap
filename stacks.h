@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
+/*                                                        :::      ::::::::   */
 /*   stacks.h                                           :+:      :+:    :+:   */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/02/20 10:18:47                                            */
-/*   Updated: 2023/03/17 11:18:33 by anon             ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/18 21:12:07 by evaluation        #+#    #+#             */
+/*   Updated: 2023/03/18 21:12:28 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma GCC diagnostic warning "-Weverything"
+#ifndef STACKS_H
+# define STACKS_H
 
-#ifndef T_STACKS_H
-# define T_STACKS_H
-
-typedef struct	s_stack_a
+typedef struct s_stack_a
 {
 	int	*bottom;
 	int	*top;
@@ -23,7 +21,7 @@ typedef struct	s_stack_a
 	int	max_size;
 }t_stack_a;
 
-typedef struct	s_stack_b
+typedef struct s_stack_b
 {
 	int	*bottom;
 	int	*top;

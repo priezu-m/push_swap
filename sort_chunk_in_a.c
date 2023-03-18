@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
+/*                                                        :::      ::::::::   */
 /*   sort_chunk_in_a.c                                  :+:      :+:    :+:   */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/03/09 16:38:05                                            */
-/*   Updated: 2023/03/17 11:12:45 by anon             ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/18 21:07:04 by evaluation        #+#    #+#             */
+/*   Updated: 2023/03/18 21:11:24 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#pragma GCC diagnostic warning "-Weverything"
 
 #include "sort_chunk_in_a.h"
 #include "ft_math.h"
@@ -18,11 +16,13 @@
 #include "final_chunck_sort.h"
 #include <stdlib.h>
 
-static void	set_pivots(int *pivot_a, int *pivot_b, t_stacks *stacks, int chunk_size)
+static void	set_pivots(int *pivot_a, int *pivot_b,
+		t_stacks *stacks, int chunk_size)
 {
 	*pivot_a = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size);
 	*pivot_a = ceil_div(*pivot_a + *pivot_a + chunk_size, 2);
-	*pivot_b = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size) + *pivot_a;
+	*pivot_b = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size);
+	*pivot_b += *pivot_a;
 	*pivot_b = *pivot_b / 2;
 }
 
@@ -37,7 +37,7 @@ static void	derotate_a(int size, t_stacks *stacks)
 	}
 }
 
-static void	split_chunk(int	chunk_size, t_stacks *stacks, int (*chunk_sizes)[2])
+static void	split_chunk(int chunk_size, t_stacks *stacks, int (*chunk_sizes)[2])
 {
 	int	pivot_a;
 	int	pivot_b;
@@ -62,11 +62,12 @@ static void	split_chunk(int	chunk_size, t_stacks *stacks, int (*chunk_sizes)[2])
 	}
 }
 
-void sort_chunk_in_a(t_stacks *stacks, int chunk_size)
+void	sort_chunk_in_a(t_stacks *stacks, int chunk_size)
 {
-	int (* const	chunk_sizes)[2] = calloc(sizeof(int) * 2, (size_t)ceil_log2(chunk_size));
-	int				i;
+	int	(*chunk_sizes)[2];
+	int	i;
 
+	chunk_sizes = calloc(sizeof(int) * 2, (size_t)ceil_log2(chunk_size));
 	i = 0;
 	while (chunk_size > 4)
 	{

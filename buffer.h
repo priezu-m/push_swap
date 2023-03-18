@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: buffer.h                                                       */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/02/20 13:17:14                                            */
-/*   Updated:  2023/02/20 13:24:56                                            */
+/*                                                        :::      ::::::::   */
+/*   buffer.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/18 20:38:11 by evaluation        #+#    #+#             */
+/*   Updated: 2023/03/18 20:38:16 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef enum e_buffer_action
 {
 	nothing = 0,
 	push = 1,
-	flush = 1 << 1,
+	flush = 1 << 1
 }t_buffer_action;
 
 void	buffer(t_buffer_action action, t_move move);

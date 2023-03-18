@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: do_move.c                                                      */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/02/20 17:53:14                                            */
-/*   Updated:  2023/02/20 17:53:16                                            */
+/*                                                        :::      ::::::::   */
+/*   do_move.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/18 20:39:23 by evaluation        #+#    #+#             */
+/*   Updated: 2023/03/18 21:00:48 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#pragma GCC diagnostic warning "-Weverything"
 
 #include "stacks.h"
 #include "basic_moves.h"
 #include "buffer.h"
+
+static void	improve_order(t_stacks *stacks)
+{
+	if (stacks->stack_b.current_size > 1
+		&& (*stacks->stack_b.top < *(stacks->stack_b.top - 1)))
+		do_move(sb, stacks);
+	if (stacks->stack_a.current_size > 1
+		&& (*stacks->stack_a.top > *(stacks->stack_a.top - 1)))
+		do_move(sa, stacks);
+}
 
 void	do_move(t_move move, t_stacks *stacks)
 {
@@ -41,4 +49,6 @@ void	do_move(t_move move, t_stacks *stacks)
 		push_to_a(&stacks->stack_a, &stacks->stack_b);
 	else if (move == pb)
 		push_to_b(&stacks->stack_a, &stacks->stack_b);
+	if (move == sa || move == sb)
+		improve_order(stacks);
 }

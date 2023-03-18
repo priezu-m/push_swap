@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: ft_math.c                                                      */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/02/24 18:07:35                                            */
-/*   Updated:  2023/02/24 18:19:05                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_math.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/18 21:03:31 by evaluation        #+#    #+#             */
+/*   Updated: 2023/03/18 21:03:43 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#pragma GCC diagnostic warning "-Weverything"
 
 #include "ft_math.h"
 #include "limits.h"
@@ -31,7 +29,7 @@ int	ft_min(int x, int y)
 
 int	get_min(int *arr, int size)
 {
-	int min;
+	int	min;
 	int	i;
 
 	i = 0;
@@ -46,7 +44,7 @@ int	get_min(int *arr, int size)
 
 int	get_max(int *arr, int size)
 {
-	int max;
+	int	max;
 	int	i;
 
 	i = 0;

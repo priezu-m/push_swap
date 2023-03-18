@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: greater_lesser.h                                               */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/02/24 16:54:20                                            */
-/*   Updated:  2023/02/24 16:56:46                                            */
+/*                                                        :::      ::::::::   */
+/*   greater_lesser.h                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/18 21:04:11 by evaluation        #+#    #+#             */
+/*   Updated: 2023/03/18 21:04:19 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma GCC diagnostic warning "-Weverything"
-
-#ifndef GREATER_LESSER
-# define GREATER_LESSER
+#ifndef GREATER_LESSER_H
+# define GREATER_LESSER_H
 
 # include <stdbool.h>
 

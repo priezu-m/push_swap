@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: sort_chunk_int_a.h                                             */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/03/06 18:11:07                                            */
-/*   Updated:  2023/03/06 18:12:16                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_chunk_in_a.h                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/18 21:11:39 by evaluation        #+#    #+#             */
+/*   Updated: 2023/03/18 21:11:47 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#pragma GCC diagnostic warning "-Weverything"
 
 #ifndef SORT_CHUNK_IN_A_H
 # define SORT_CHUNK_IN_A_H
 
-#include "stacks.h"
+# include "stacks.h"
 
 void	sort_chunk_in_a(t_stacks *stacks, int chunk_size);
 

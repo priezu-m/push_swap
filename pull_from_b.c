@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
+/*                                                        :::      ::::::::   */
 /*   pull_from_b.c                                      :+:      :+:    :+:   */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/03/06 16:33:43                                            */
-/*   Updated: 2023/03/14 09:29:43 by anon             ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/18 21:05:34 by evaluation        #+#    #+#             */
+/*   Updated: 2023/03/18 21:06:02 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#pragma GCC diagnostic warning "-Weverything"
 
 #include "pull_from_b.h"
 #include "atom_pull_from_b.h"
 #include "sort_chunk_in_a.h"
 #include "ft_math.h"
-
 
 static void	pull_chunk(t_stacks *stacks, int chunk_size)
 {
@@ -34,7 +31,8 @@ static void	pull_chunk(t_stacks *stacks, int chunk_size)
 		}
 		else
 		{
-			pivot = get_min(stacks->stack_b.top - (chunk_size - 1), chunk_size) + (chunk_size / 2);
+			pivot = get_min(stacks->stack_b.top - (chunk_size - 1),
+					chunk_size) + (chunk_size / 2);
 			pivot2 = pivot + (ceil_div(chunk_size, 2) / 2);
 			aux = chunk_size;
 			count[0] = 0;
@@ -84,7 +82,6 @@ void	pull_from_b(t_stacks *stacks, int (*chunk_sizes)[2], int chunk_count)
 
 	while (chunk_count)
 	{
-
 		pull_chunk(stacks, chunk_sizes[chunk_count - 1][0]);
 		aux = chunk_sizes[chunk_count - 1][1];
 		if (aux != stacks->stack_b.current_size)

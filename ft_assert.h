@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: ft_assert.h                                                    */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/02/20 11:39:09                                            */
-/*   Updated:  2023/02/21 16:42:13                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_assert.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/18 21:03:04 by evaluation        #+#    #+#             */
+/*   Updated: 2023/03/18 21:03:13 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma GCC diagnostic warning "-Weverything"
-
-#ifndef FT_ASSERT
-# define FT_ASSERT
+#ifndef FT_ASSERT_H
+# define FT_ASSERT_H
 
 # include <stdbool.h>
 

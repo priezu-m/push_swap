@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: init_stacks.c                                                  */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/02/20 17:53:40                                            */
-/*   Updated:  2023/02/20 18:27:29                                            */
+/*                                                        :::      ::::::::   */
+/*   init_stacks.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/18 21:04:36 by evaluation        #+#    #+#             */
+/*   Updated: 2023/03/18 21:04:50 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#pragma GCC diagnostic warning "-Weverything"
 
 #include "ft_assert.h"
 #include "stacks.h"
@@ -30,7 +28,8 @@ static void	insert(int *arr, int val, int new_size)
 		ft_assert(arr[i] != val);
 		if (arr[i] > val)
 		{
-			memmove(&arr[i + 1], &arr[i], (size_t)(new_size - i - 1) * sizeof (int));
+			memmove(&arr[i + 1], &arr[i],
+				(size_t)(new_size - i - 1) * sizeof (int));
 			arr[i] = val;
 			return ;
 		}
