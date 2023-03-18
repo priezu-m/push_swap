@@ -6,7 +6,7 @@
 /*   github:   https://github.com/priezu-m                                    */
 /*   Licence:  GPLv3                                                          */
 /*   Created:  2023/03/09 16:38:05                                            */
-/*   Updated: 2023/03/17 10:14:26 by anon             ###   ########.fr       */
+/*   Updated: 2023/03/17 11:12:45 by anon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,54 +18,67 @@
 #include "final_chunck_sort.h"
 #include <stdlib.h>
 
+static void	set_pivots(int *pivot_a, int *pivot_b, t_stacks *stacks, int chunk_size)
+{
+	*pivot_a = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size);
+	*pivot_a = ceil_div(*pivot_a + *pivot_a + chunk_size, 2);
+	*pivot_b = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size) + *pivot_a;
+	*pivot_b = *pivot_b / 2;
+}
+
+static void	derotate_a(int size, t_stacks *stacks)
+{
+	if (size == stacks->stack_a.current_size)
+		return ;
+	while (size)
+	{
+		do_move(rra, stacks);
+		size--;
+	}
+}
+
+static void	split_chunk(int	chunk_size, t_stacks *stacks, int (*chunk_sizes)[2])
+{
+	int	pivot_a;
+	int	pivot_b;
+
+	set_pivots(&pivot_a, &pivot_b, stacks, chunk_size);
+	while (chunk_size)
+	{
+		if (*stacks->stack_a.top < pivot_a)
+		{
+			do_move(pb, stacks);
+			if (*stacks->stack_b.top < pivot_b)
+			{
+				do_move(rb, stacks);
+				chunk_sizes[0][1]++;
+			}
+			else
+				chunk_sizes[0][0]++;
+		}
+		else
+			do_move(ra, stacks);
+		chunk_size--;
+	}
+}
+
 void sort_chunk_in_a(t_stacks *stacks, int chunk_size)
 {
 	int (* const	chunk_sizes)[2] = calloc(sizeof(int) * 2, (size_t)ceil_log2(chunk_size));
-	int				aux;
-	int				pivot_a;
-	int				pivot_b;
 	int				i;
 
-	pivot_a = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size);
-	pivot_a = ceil_div(pivot_a + pivot_a + chunk_size, 2);
-	pivot_b = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size) + pivot_a;
-	pivot_b = pivot_b / 2;
 	i = 0;
 	while (chunk_size > 4)
 	{
-		aux = chunk_size;
-		while (aux)
-		{
-			if (*stacks->stack_a.top < pivot_a)
-			{
-				do_move(pb, stacks);
-				if (*stacks->stack_b.top < pivot_b)
-				{
-					do_move(rb, stacks);
-					chunk_sizes[i][1]++;
-				}
-				else
-					chunk_sizes[i][0]++;
-			}
-			else
-				do_move(ra, stacks);
-			aux--;
-		}
+		split_chunk(chunk_size, stacks, &chunk_sizes[i]);
 		i++;
 		chunk_size /= 2;
-		aux = chunk_size;
-		while (aux)
-		{
-			do_move(rra, stacks);
-			aux--;
-		}
-		//bug here
-		pivot_a = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size);
-		pivot_a = ceil_div(pivot_a + pivot_a + chunk_size, 2);
-		pivot_b = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size) + pivot_a;
-		pivot_b = pivot_b / 2;
+		derotate_a(chunk_size, stacks);
 	}
-	final_chunck_sort(stacks, chunk_sizes, i, chunk_size);
+	if (chunk_size == stacks->stack_a.current_size)
+		final_chunck_sort_set_up(stacks, chunk_sizes, i);
+	else
+		final_chunck_sort(stacks, chunk_sizes, i, chunk_size);
 	if (chunk_size != 4)
 		i--;
 	if (i > 0)

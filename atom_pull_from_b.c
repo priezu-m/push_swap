@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   Filename: atom_pull_from_b.c                                             */
-/*   Author:   Peru Riezu <riezumunozperu@gmail.com>                          */
-/*   github:   https://github.com/priezu-m                                    */
-/*   Licence:  GPLv3                                                          */
-/*   Created:  2023/03/06 17:23:48                                            */
-/*   Updated:  2023/03/12 15:54:47                                            */
+/*                                                        :::      ::::::::   */
+/*   atom_pull_from_b.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anon <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/17 11:20:42 by anon              #+#    #+#             */
+/*   Updated: 2023/03/17 11:27:06 by anon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#pragma GCC diagnostic warning "-Weverything"
 
 #include "atom_pull_from_b.h"
 #include "ft_math.h"
 
+static void	atom_pull2(t_stacks *stacks)
+{
+
+}
+
+static void	atom_pull3(t_stacks *stacks)
+{
+
+}
+
+static void	atom_pull4(t_stacks *stacks)
+{
+
+}
+
 void	atom_pull_from_b(t_stacks *stacks, int chunk_size)
 {
+	void (*const table[5])(t_stacks *) = {[2] = atom_pull2, [3] = atom_pull3, [4] = atom_pull4};
 	int	aux;
 	int	pivot;
 
