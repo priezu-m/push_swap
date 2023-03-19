@@ -6,7 +6,7 @@
 /*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:07:04 by evaluation        #+#    #+#             */
-/*   Updated: 2023/03/19 01:37:10 by anon             ###   ########.fr       */
+/*   Updated: 2023/03/19 14:40:57 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,17 @@
 #include "ft_math.h"
 #include "pull_from_b.h"
 #include "final_chunck_sort.h"
+#include "ft_libc.h"
 #include <stdlib.h>
 
 static void	set_pivots(int *pivot_a, int *pivot_b,
 		t_stacks *stacks, int chunk_size)
 {
-	if (chunk_size < 50)
-	{
-		*pivot_a = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size);
-		*pivot_a = ceil_div(*pivot_a + *pivot_a + chunk_size, 2);
-		*pivot_b = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size);
-		*pivot_b += *pivot_a;
-		*pivot_b = *pivot_b / 2;
-	}
-	else
-	{
-		*pivot_a = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size);
-		*pivot_a = *pivot_a + ceil_div(chunk_size, 3);
-		*pivot_b = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size);
-		*pivot_b += *pivot_a;
-		*pivot_b = *pivot_b / 2;
-	}
+	*pivot_a = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size);
+	*pivot_a = ceil_div(*pivot_a + *pivot_a + chunk_size, 2);
+	*pivot_b = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size);
+	*pivot_b += *pivot_a;
+	*pivot_b = *pivot_b / 2;
 }
 
 static void	derotate_a(int size, t_stacks *stacks)
@@ -78,7 +68,7 @@ void	sort_chunk_in_a(t_stacks *stacks, int chunk_size)
 	int	(*chunk_sizes)[2];
 	int	i;
 
-	chunk_sizes = calloc(sizeof(int) * 2, (size_t)ceil_log2(chunk_size));
+	chunk_sizes = ft_calloc(sizeof(int) * 2, (size_t)ceil_log2(chunk_size));
 	i = 0;
 	while (chunk_size > 4)
 	{

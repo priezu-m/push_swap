@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   basic_moves3.c                                     :+:      :+:    :+:   */
+/*   ft_libc.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 20:36:57 by evaluation        #+#    #+#             */
-/*   Updated: 2023/03/19 14:26:11 by evaluation       ###   ########.fr       */
+/*   Created: 2023/03/19 14:35:38 by evaluation        #+#    #+#             */
+/*   Updated: 2023/03/19 16:27:18 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basic_moves.h"
+#ifndef FT_LIBC_H
+# define FT_LIBC_H
 
-void	push_to_b(t_stack_a *stack_a, t_stack_b *stack_b)
-{
-	if (stack_a->current_size < 1)
-		return ;
-	stack_b->top++;
-	stack_b->current_size++;
-	*stack_b->top = *stack_a->top;
-	stack_a->top--;
-	stack_a->current_size--;
-}
+# include <stddef.h>
+
+void	*ft_memmove(void *dest, const void *src, size_t len);
+void	*ft_calloc(size_t count, size_t size);
+int		ft_isdigit(int c);
+long	trunc_atoi(char const *str);
+
+#endif

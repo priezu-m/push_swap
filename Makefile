@@ -6,7 +6,7 @@
 #    github:   https://github.com/priezu-m                                     #
 #    Licence:  GPLv3                                                           #
 #    Created:  2023/02/09 13:34:08                                             #
-#    Updated: 2023/03/17 10:19:30 by anon             ###   ########.fr        #
+#    Updated: 2023/03/19 17:39:26 by priezu-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 SHELL :=			bash
 CC :=				clang
-CFLAGS :=			-Ofast -flto  -Weverything
+CFLAGS :=			-fsanitize=address,undefined -flto  -Weverything -g3
 AR :=				ar
 ARFLAGS :=			rcs
 NORMINETTE :=		$(shell command -v norminette)
@@ -28,7 +28,7 @@ NAME :=				push_swap
 DEP_PATH :=			./DEP
 OBJ_PATH :=			./OBJ
 
-EXCLUDE_DIRS :=		$(DEP_PATH) $(OBJ_PATH) $(LIBFT_OBJ_PATH) ./.git
+EXCLUDE_DIRS :=		$(DEP_PATH) $(OBJ_PATH) $(LIBFT_OBJ_PATH) ./.git ./push_swap_visualizer
 EXCLUDE_FILES :=	./tags ./random.c ./a.out
 
 HDR :=				$(shell find . \

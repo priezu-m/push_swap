@@ -6,14 +6,14 @@
 /*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 20:37:54 by evaluation        #+#    #+#             */
-/*   Updated: 2023/03/18 20:37:57 by evaluation       ###   ########.fr       */
+/*   Updated: 2023/03/19 14:28:01 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "buffer.h"
 #include "compact_buff.h"
 #include "stacks.h"
-#include <stdio.h>
+#include <unistd.h>
 
 #define BUFF_SIZE 50000
 
@@ -27,27 +27,27 @@ static void	flush_before_exit(void)
 static void	print_move(t_move move)
 {
 	if (move == ra)
-		printf("ra\n");
+		write(STDOUT_FILENO, "ra\n", 3);
 	else if (move == rb)
-		printf("rb\n");
+		write(STDOUT_FILENO, "rb\n", 3);
 	else if (move == rr)
-		printf("rr\n");
+		write(STDOUT_FILENO, "rr\n", 3);
 	else if (move == rra)
-		printf("rra\n");
+		write(STDOUT_FILENO, "rra\n", 4);
 	else if (move == rrb)
-		printf("rrb\n");
+		write(STDOUT_FILENO, "rrb\n", 4);
 	else if (move == rrr)
-		printf("rrr\n");
+		write(STDOUT_FILENO, "rrr\n", 4);
 	else if (move == sa)
-		printf("sa\n");
+		write(STDOUT_FILENO, "sa\n", 3);
 	else if (move == sb)
-		printf("sb\n");
+		write(STDOUT_FILENO, "sb\n", 3);
 	else if (move == ss)
-		printf("ss\n");
+		write(STDOUT_FILENO, "ss\n", 3);
 	else if (move == pa)
-		printf("pa\n");
+		write(STDOUT_FILENO, "pa\n", 3);
 	else if (move == pb)
-		printf("pb\n");
+		write(STDOUT_FILENO, "pb\n", 3);
 }
 
 void	buffer(t_buffer_action action, t_move move)

@@ -6,22 +6,22 @@
 /*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 20:38:47 by evaluation        #+#    #+#             */
-/*   Updated: 2023/03/18 20:38:49 by evaluation       ###   ########.fr       */
+/*   Updated: 2023/03/19 15:05:58 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "compact_buff.h"
 #include "move_relations.h"
+#include "ft_libc.h"
 #include "stacks.h"
-#include <string.h>
 #include <stdbool.h>
-#include <assert.h>
 #include <stddef.h>
 
 static int	compact_opposite(t_move *buff, int *i, int *j, int *k)
 {
 	buff[*j] = neutral_of(buff[*k]);
-	memmove(&buff[(*k)], &buff[(*k) + 1], (size_t)((*i) - (*k)) * sizeof(int));
+	ft_memmove(&buff[(*k)], &buff[(*k) + 1],
+		(size_t)((*i) - (*k)) * sizeof(int));
 	(*i)--;
 	return (1);
 }
@@ -29,16 +29,19 @@ static int	compact_opposite(t_move *buff, int *i, int *j, int *k)
 static int	compact_half_inverse(t_move *buff, int *i, int *j, int *k)
 {
 	buff[*j] = half_inverse_of(buff[*j], buff[*k]);
-	memmove(&buff[(*k)], &buff[(*k) + 1], (size_t)((*i) - (*k)) * sizeof(int));
+	ft_memmove(&buff[(*k)], &buff[(*k) + 1],
+		(size_t)((*i) - (*k)) * sizeof(int));
 	(*i)--;
 	return (1);
 }
 
 static int	compact_inverse(t_move *buff, int *i, int *j, int *k)
 {
-	memmove(&buff[(*k)], &buff[(*k) + 1], (size_t)((*i) - (*k)) * sizeof(int));
+	ft_memmove(&buff[(*k)], &buff[(*k) + 1],
+		(size_t)((*i) - (*k)) * sizeof(int));
 	(*i)--;
-	memmove(&buff[*j], &buff[(*j) + 1], (size_t)((*i) - ((*j))) * sizeof(int));
+	ft_memmove(&buff[*j], &buff[(*j) + 1],
+		(size_t)((*i) - ((*j))) * sizeof(int));
 	(*i)--;
 	return (2);
 }

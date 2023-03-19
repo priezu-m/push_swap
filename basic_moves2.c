@@ -6,13 +6,11 @@
 /*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 20:36:06 by evaluation        #+#    #+#             */
-/*   Updated: 2023/03/18 20:37:11 by evaluation       ###   ########.fr       */
+/*   Updated: 2023/03/19 14:26:00 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "basic_moves.h"
-#include <string.h>
-#include <stddef.h>
 
 void	reverse_rotate_both(t_stack_a *stack_a, t_stack_b *stack_b)
 {

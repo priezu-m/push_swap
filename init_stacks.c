@@ -6,17 +6,16 @@
 /*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:04:36 by evaluation        #+#    #+#             */
-/*   Updated: 2023/03/18 21:04:50 by evaluation       ###   ########.fr       */
+/*   Updated: 2023/03/19 15:06:29 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_assert.h"
 #include "stacks.h"
+#include "ft_libc.h"
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <string.h>
-#include <stdio.h>
 
 static void	insert(int *arr, int val, int new_size)
 {
@@ -28,7 +27,7 @@ static void	insert(int *arr, int val, int new_size)
 		ft_assert(arr[i] != val);
 		if (arr[i] > val)
 		{
-			memmove(&arr[i + 1], &arr[i],
+			ft_memmove(&arr[i + 1], &arr[i],
 				(size_t)(new_size - i - 1) * sizeof (int));
 			arr[i] = val;
 			return ;

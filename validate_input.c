@@ -6,16 +6,15 @@
 /*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:12:38 by evaluation        #+#    #+#             */
-/*   Updated: 2023/03/18 21:12:40 by evaluation       ###   ########.fr       */
+/*   Updated: 2023/03/19 16:27:44 by evaluation       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validate_input.h"
 #include "ft_assert.h"
+#include "ft_libc.h"
 #include <stdbool.h>
-#include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 #include <limits.h>
 
 static bool	contains_nondigit(char *str)
@@ -24,7 +23,7 @@ static bool	contains_nondigit(char *str)
 		str++;
 	while (*str)
 	{
-		if (!isdigit(*str))
+		if (!ft_isdigit(*str))
 			return (true);
 		str++;
 	}
@@ -42,8 +41,8 @@ void	validate_input(int argc, char **argv)
 	while (i < argc)
 	{
 		ft_assert(contains_nondigit(argv[i]) == false);
-		ft_assert(strtol(argv[i], NULL, 10) <= INT_MAX);
-		ft_assert(strtol(argv[i], NULL, 10) >= INT_MIN);
+		ft_assert(trunc_atoi(argv[i]) <= INT_MAX);
+		ft_assert(trunc_atoi(argv[i]) >= INT_MIN);
 		i++;
 	}
 }
