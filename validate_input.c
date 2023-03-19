@@ -6,7 +6,7 @@
 /*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:12:38 by evaluation        #+#    #+#             */
-/*   Updated: 2023/03/19 16:27:44 by evaluation       ###   ########.fr       */
+/*   Updated: 2023/03/19 18:03:46 by priezu-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,8 @@ void	validate_input(int argc, char **argv)
 {
 	int	i;
 
-	if (argc < 2)
+	if (argc =< 2)
 		exit(EXIT_FAILURE);
-	ft_assert(argc > 2);
 	i = 1;
 	while (i < argc)
 	{
