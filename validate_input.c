@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_input.c                                   :+:      :+:    :+:   */
+/*   Filename: validate_input.c                                               */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:12:38 by evaluation        #+#    #+#             */
-/*   Updated: 2023/03/19 18:03:46 by priezu-m         ###   ########.fr       */
+/*   Updated:  2023/03/19 21:05:51                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	validate_input(int argc, char **argv)
 {
 	int	i;
 
-	if (argc <= 2)
+	if (argc < 2)
 		exit(EXIT_FAILURE);
 	i = 1;
 	while (i < argc)

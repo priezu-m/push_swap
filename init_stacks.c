@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stacks.c                                      :+:      :+:    :+:   */
+/*   Filename: init_stacks.c                                                  */
 /*                                                    +:+ +:+         +:+     */
 /*   By: priezu-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 17:55:40 by priezu-m          #+#    #+#             */
-/*   Updated: 2023/03/19 17:55:41 by priezu-m         ###   ########.fr       */
+/*   Updated:  2023/03/19 21:06:57                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	init_stacks(t_stacks *stacks, int argc, char **argv)
 	i = 0;
 	while (i < stacks->stack_a.max_size)
 	{
-		stacks->stack_a.bottom[i] = atoi(argv[argc - 1]);
+		stacks->stack_a.bottom[i] = trunc_atoi(argv[argc - 1]);
 		argc--;
 		i++;
 	}
