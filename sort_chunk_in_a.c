@@ -6,7 +6,7 @@
 /*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:07:04 by evaluation        #+#    #+#             */
-/*   Updated: 2023/03/18 21:11:24 by evaluation       ###   ########.fr       */
+/*   Updated: 2023/03/19 01:37:10 by anon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,22 @@
 static void	set_pivots(int *pivot_a, int *pivot_b,
 		t_stacks *stacks, int chunk_size)
 {
-	*pivot_a = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size);
-	*pivot_a = ceil_div(*pivot_a + *pivot_a + chunk_size, 2);
-	*pivot_b = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size);
-	*pivot_b += *pivot_a;
-	*pivot_b = *pivot_b / 2;
+	if (chunk_size < 50)
+	{
+		*pivot_a = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size);
+		*pivot_a = ceil_div(*pivot_a + *pivot_a + chunk_size, 2);
+		*pivot_b = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size);
+		*pivot_b += *pivot_a;
+		*pivot_b = *pivot_b / 2;
+	}
+	else
+	{
+		*pivot_a = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size);
+		*pivot_a = *pivot_a + ceil_div(chunk_size, 3);
+		*pivot_b = get_min(stacks->stack_a.top - (chunk_size - 1), chunk_size);
+		*pivot_b += *pivot_a;
+		*pivot_b = *pivot_b / 2;
+	}
 }
 
 static void	derotate_a(int size, t_stacks *stacks)
@@ -72,8 +83,8 @@ void	sort_chunk_in_a(t_stacks *stacks, int chunk_size)
 	while (chunk_size > 4)
 	{
 		split_chunk(chunk_size, stacks, &chunk_sizes[i]);
+		chunk_size -= chunk_sizes[i][0] + chunk_sizes[i][1];
 		i++;
-		chunk_size /= 2;
 		derotate_a(chunk_size, stacks);
 	}
 	if (chunk_size == stacks->stack_a.current_size)

@@ -6,7 +6,7 @@
 /*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 20:39:40 by evaluation        #+#    #+#             */
-/*   Updated: 2023/03/18 20:53:31 by evaluation       ###   ########.fr       */
+/*   Updated: 2023/03/19 01:17:27 by anon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	carry_back_4(t_stacks *stacks)
 	do_move(pa, stacks);
 }
 
-static void	sort3(t_stacks *stacks)
+static void	sort3_set_up(t_stacks *stacks)
 {
 	if (*stacks->stack_a.top == stacks->stack_a.max_size - 3)
 	{
@@ -80,7 +80,7 @@ void	final_chunck_sort_set_up(t_stacks *stacks,
 	}
 	else if (stacks->stack_a.current_size == 3)
 	{
-		sort3(stacks);
+		sort3_set_up(stacks);
 		if (chunk_number)
 		{
 			if ((chunk_sizes[chunk_number - 1][0]
