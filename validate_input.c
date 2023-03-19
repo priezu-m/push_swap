@@ -34,7 +34,7 @@ void	validate_input(int argc, char **argv)
 {
 	int	i;
 
-	if (argc =< 2)
+	if (argc <= 2)
 		exit(EXIT_FAILURE);
 	i = 1;
 	while (i < argc)
