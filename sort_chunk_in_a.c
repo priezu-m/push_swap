@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_chunk_in_a.c                                  :+:      :+:    :+:   */
+/*   Filename: sort_chunk_in_a.c                                              */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:07:04 by evaluation        #+#    #+#             */
-/*   Updated: 2023/03/19 14:40:57 by evaluation       ###   ########.fr       */
+/*   Updated:  2023/03/19 16:53:46                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "ft_math.h"
 #include "pull_from_b.h"
 #include "final_chunck_sort.h"
+#include "ft_assert.h"
 #include "ft_libc.h"
 #include <stdlib.h>
 
@@ -69,6 +70,7 @@ void	sort_chunk_in_a(t_stacks *stacks, int chunk_size)
 	int	i;
 
 	chunk_sizes = ft_calloc(sizeof(int) * 2, (size_t)ceil_log2(chunk_size));
+	ft_assert(chunk_sizes != NULL);
 	i = 0;
 	while (chunk_size > 4)
 	{

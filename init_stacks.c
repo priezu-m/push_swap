@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stacks.c                                      :+:      :+:    :+:   */
+/*   Filename: init_stacks.c                                                  */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evaluation </var/mail/evaluation>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:04:36 by evaluation        #+#    #+#             */
-/*   Updated: 2023/03/19 15:06:29 by evaluation       ###   ########.fr       */
+/*   Updated:  2023/03/19 16:52:02                                            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static void	index_array(int *arr, int size)
 	int			i;
 	int			j;
 
+	ft_assert(aux_arr != NULL);
 	i = 0;
 	while (i < size)
 	{
